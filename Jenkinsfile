@@ -15,7 +15,7 @@ pipeline {
                     url: 'https://github.com/matthcol/movieapijava2021.git'
 
                 // Run Maven on a Unix agent to compile.
-                sh "mvn -Dmaven.test.failure.ignore=true clean compile"
+                sh "mvn -Dmaven.test.failure.ignore=true clean"
 
                 // To run Maven on a Windows agent, use
                 // bat "mvn -Dmaven.test.failure.ignore=true clean package"

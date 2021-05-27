@@ -21,19 +21,5 @@ pipeline {
                 // bat "mvn -Dmaven.test.failure.ignore=true clean package"
             }
         }
-		stage ('Package') {
-			steps {
-				Run Maven on a Unix agent to package without the tests.
-				sh 'mvn -DskipTests package'
-			}
-            post {
-                // If Maven was able to run the tests, even if some of the test
-                // failed, record the test results and archive the jar file.
-                success {
-                    junit '**/target/surefire-reports/TEST-*.xml'
-                    archiveArtifacts 'target/*.jar'
-                }
-            }
-		}
     }
 }

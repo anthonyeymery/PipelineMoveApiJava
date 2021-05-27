@@ -14,12 +14,16 @@ pipeline {
                 git branch: 'dev',
                     url: 'https://github.com/matthcol/movieapijava2021.git'
 
-                // Run Maven on a Unix agent.
-                sh "mvn -Dmaven.test.failure.ignore=true clean package"
+                // Run Maven on a Unix agent to compile.
+                sh "mvn -Dmaven.test.failure.ignore=true clean compile"
 
                 // To run Maven on a Windows agent, use
                 // bat "mvn -Dmaven.test.failure.ignore=true clean package"
             }
+			steps {
+				Run Maven on a Unix agent to package without the tests.
+				sh 'mvn -DskipTests package'
+			}
 
             post {
                 // If Maven was able to run the tests, even if some of the test
